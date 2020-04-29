@@ -12,6 +12,12 @@
 
     //$theme = "default-light";
     $theme = "default-dark";
+    //$checkbox_theme_name = "flat";
+    //$checkbox_theme_variant = "blue";
+    $checkbox_theme_name = "polaris";
+    $checkbox_theme_variant = "polaris";
+    //$checkbox_theme_name = "futurico";
+    //$checkbox_theme_variant = "futurico";
 
     check_cors();
 
@@ -214,8 +220,6 @@
 
     <link rel="stylesheet" href="style/vendor/AdminLTE.min.css">
     <link rel="stylesheet" href="style/vendor/animate.css">
-    <link rel="stylesheet" href="style/pi-hole.css">
-    <link rel="stylesheet" href="style/themes/<?php echo $theme; ?>.css">
 
     <noscript><link rel="stylesheet" href="style/vendor/js-warn.css"></noscript>
     <script src="scripts/vendor/jquery.min.js"></script>
@@ -235,6 +239,10 @@
     <script src="scripts/vendor/jquery.dataTables.min.js"></script>
     <script src="scripts/vendor/dataTables.bootstrap.min.js"></script>
     <script src="scripts/vendor/Chart.bundle.min.js"></script>
+    <script src="scripts/vendor/iCheck.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/vendor/iCheck/<?php echo $checkbox_theme_name;?>/<?php echo $checkbox_theme_variant;?>.css">
+    <link rel="stylesheet" href="style/pi-hole.css">
+    <link rel="stylesheet" href="style/themes/<?php echo $theme; ?>.css">
 </head>
 <body class="sidebar-mini <?php if($boxedlayout){ ?>layout-boxed<?php } ?>">
  <noscript>
@@ -254,7 +262,7 @@ if($auth) {
 ?>
 
 <!-- Send token to JS -->
-<div id="token" hidden><?php if($auth) echo $token; ?></div>
+<div id="checkbox_theme" hidden><?php echo $checkbox_theme_name; ?><?php if($checkbox_theme_name !== $checkbox_theme_variant){ echo "-$checkbox_theme_variant"; } ?></div>
 <div id="enableTimer" hidden><?php if(file_exists("../custom_disable_timer")){ echo file_get_contents("../custom_disable_timer"); } ?></div>
 <div class="wrapper">
     <header class="main-header">
