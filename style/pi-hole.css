@@ -311,3 +311,12 @@ code.breakall
     left: unset !important;
     right: 10px;
 }
+
+.warning {
+    color: orange;
+    font-size: 18px;
+}
+
+.hidden {
+    display: none !important;
+}

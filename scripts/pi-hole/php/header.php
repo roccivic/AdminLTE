@@ -219,6 +219,8 @@
     <link rel="stylesheet" href="style/vendor/bootstrap/css/bootstrap-select.min.css">
     <script src="style/vendor/bootstrap/js/bootstrap-toggle.min.js"></script>
     <link rel="stylesheet" href="style/vendor/bootstrap/css/bootstrap-toggle.min.css">
+<?php } ?>
+<?php if(in_array($scriptname, array("groups.php", "groups-clients.php", "groups-domains.php", "groups-adlists.php", "messages.php"))){ ?>
     <script src="scripts/vendor/moment.min.js"></script>
 <?php } ?>
 
@@ -263,6 +265,12 @@ if($auth) {
             </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
+                    <li  id="pihole-diagnosis" class="hidden">
+                        <a href="messages.php">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            <span class="label label-warning" id="pihole-diagnosis-count"></span>
+                        </a>
+                    </li>
                     <li>
                         <a style="pointer-events:none;">
                             <span class="hidden-xs hidden-sm">hostname:</span>
@@ -493,6 +501,12 @@ if($auth) {
                         <i class="fa fa-ban"></i> <span>Blacklist</span>
                     </a>
                 </li>
+                <!-- Local DNS Records -->
+                <li<?php if($scriptname === "dns_records.php"){ ?> class="active"<?php } ?>>
+                    <a href="dns_records.php">
+                        <i class="fa fa-address-book"></i> <span>Local DNS Records</span>
+                    </a>
+                </li>
                 <!-- Group Management -->
                 <li class="treeview <?php if(in_array($scriptname, array("groups.php", "groups-clients.php", "groups-domains.php", "groups-adlists.php"))){ ?>active<?php } ?>">
                   <a href="#">
@@ -565,7 +579,7 @@ if($auth) {
                     <a href="#"><i class="fa fa-play"></i> <span id="enableLabel">Enable&nbsp;&nbsp;&nbsp;<span id="flip-status-enable"></span></span></a>
                 </li>
                 <!-- Tools -->
-                <li class="treeview <?php if(in_array($scriptname, array("gravity.php", "queryads.php", "auditlog.php", "taillog.php", "taillog-FTL.php", "debug.php"))){ ?>active<?php } ?>">
+                <li class="treeview <?php if(in_array($scriptname, array("messages.php", "gravity.php", "queryads.php", "auditlog.php", "taillog.php", "taillog-FTL.php", "debug.php", "network.php"))){ ?>active<?php } ?>">
                   <a href="#">
                     <span class="pull-right-container">
                       <i class="fa fa-angle-down pull-right" style="padding-right: 5px;"></i>
@@ -573,6 +587,12 @@ if($auth) {
                     <i class="fa fa-folder"></i> <span>Tools</span>
                   </a>
                   <ul class="treeview-menu">
+                    <!-- Pi-hole diagnosis -->
+                    <li<?php if($scriptname === "messages.php"){ ?> class="active"<?php } ?>>
+                        <a href="messages.php">
+                            <i class="fa fa-stethoscope"></i> <span>Pi-hole diagnosis</span>
+                        </a>
+                    </li>
                     <!-- Run gravity.sh -->
                     <li<?php if($scriptname === "gravity.php"){ ?> class="active"<?php } ?>>
                         <a href="gravity.php">
@@ -609,24 +629,18 @@ if($auth) {
                             <i class="fa fa-ambulance"></i> <span>Generate debug log</span>
                         </a>
                     </li>
+                    <!-- Network -->
+                    <li<?php if($scriptname === "network.php"){ ?> class="active"<?php } ?>>
+                        <a href="network.php">
+                            <i class="fa fa-network-wired"></i> <span>Network</span>
+                        </a>
+                    </li>
                   </ul>
-                </li>
-                <!-- Network -->
-                <li<?php if($scriptname === "network.php"){ ?> class="active"<?php } ?>>
-                    <a href="network.php">
-                        <i class="fa fa-network-wired"></i> <span>Network</span>
-                    </a>
                 </li>
                 <!-- Settings -->
                 <li<?php if($scriptname === "settings.php"){ ?> class="active"<?php } ?>>
                     <a href="settings.php">
                         <i class="fa fa-cogs"></i> <span>Settings</span>
-                    </a>
-                </li>
-                <!-- Local DNS Records -->
-                <li<?php if($scriptname === "dns_records.php"){ ?> class="active"<?php } ?>>
-                    <a href="dns_records.php">
-                        <i class="fa fa-address-book"></i> <span>Local DNS Records</span>
                     </a>
                 </li>
                 <!-- Logout -->
