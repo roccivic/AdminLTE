@@ -203,7 +203,7 @@
 
     <link rel="stylesheet" href="style/vendor/AdminLTE.min.css">
     <link rel="stylesheet" href="style/vendor/skin-blue.min.css">
-    <link rel="stylesheet" href="style/vendor/animate.css">
+    <link rel="stylesheet" href="style/vendor/animate.min.css">
 
     <link rel="stylesheet" href="style/pi-hole.css">
     <noscript><link rel="stylesheet" href="style/vendor/js-warn.css"></noscript>
